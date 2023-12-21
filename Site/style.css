@@ -1,0 +1,59 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+body{
+    background-color: #696969;
+    font-family: Montserrat;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+.noteContainer{
+    background-color: #5c5c5c;
+    border-radius: 1rem;
+    transition: 1s;
+    display: block;
+    margin: 0% 2%;
+}
+.title{
+    padding-top: 1%;
+    color: #fff;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.5%;
+}
+.noteDescription{
+    color: #fff;
+    transition: 1s;
+    font-size: 0;
+    padding-left: 5%;
+}
+.visible{
+    padding-bottom: 2.5%;
+    padding-right: 5%;
+    font-size: medium;
+}
+.loginContainer{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100vh;
+    overflow: hidden;
+}
+.inputLogin{
+    background-color: #5c5c5c;
+    border-width: 0;
+    height: 5vh;
+    border-radius: 5vh;
+    padding-left: 1%;
+}
+.submitLogin{
+    background-color: #5c5c5c;
+    height: 4vh;
+    border-radius: 4vh;
+    border: 0;
+    text-align: center;
+    margin: 1%;
+    width: 7vw;
+    color: white;
+}

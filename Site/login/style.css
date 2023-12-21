@@ -1,0 +1,17 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+body {
+	background-color: dimgray;
+	margin: 0;
+	color: white;
+	font-family: Montserrat;
+}
+.loginContainer{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100vh;
+}
+.loginChildren{
+	display: inline-block;
+}
