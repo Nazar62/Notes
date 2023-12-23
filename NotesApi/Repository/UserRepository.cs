@@ -55,8 +55,6 @@ namespace NotesApi.Repository
         }
         public bool CreateUser(User user)
         {
-            if(!UserExists(user.Name))
-            {
             string hashedPass = HashPassword(user.Password);
             User userh = new User()
             {
@@ -66,8 +64,6 @@ namespace NotesApi.Repository
             };
             _context.Users.Add(userh);
             return Save();
-            }
-            return false;
         }
         public bool UpdateUser(User user)
         {

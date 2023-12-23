@@ -42,10 +42,10 @@ namespace NotesApi.Controllers
 
             if(!_notesRepository.CreateNote(note))
             {
-                ModelState.AddModelError("", "Something went wrong creating");
+                ModelState.AddModelError("error", "Something went wrong creating");
                 return StatusCode(500, ModelState);
             }
-            return StatusCode(201);
+            return Ok(Json("Created"));
         }
 
         [HttpPut("updateNote/{NoteId}")]
@@ -59,10 +59,10 @@ namespace NotesApi.Controllers
                 return BadRequest();
             if (!_notesRepository.UpdateNote(note))
             {
-                ModelState.AddModelError("", "Something went wrong updating");
+                ModelState.AddModelError("error", "Something went wrong updating");
                 return StatusCode(500, ModelState);
             }
-            return Ok("Updated");
+            return Ok(Json("\"r\": \"Updated\""));
         }
 
         [HttpDelete("{NoteId}")]
@@ -76,10 +76,10 @@ namespace NotesApi.Controllers
                 return BadRequest(ModelState);
             if (!_notesRepository.DeleteNote(note))
             {
-                ModelState.AddModelError("", "Something went wrong deleting");
+                ModelState.AddModelError("error", "Something went wrong deleting");
                 return StatusCode(500, ModelState);
             }
-            return Ok("Deleted");
+            return Ok(Json("deleted"));
         }
     }
 }

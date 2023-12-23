@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Notes</title>
 </head>
 <body>
-    <form id="loginForm">
+    <!-- <form id="loginForm">
         <div class="loginContainer">
             <label for="name">Login</label>
             <input type="text" name="name" required class="inputLogin">
@@ -15,10 +15,39 @@
             <input type="text" name="password" required class="inputLogin" id="password">
 			<input type="submit" value="Login" class="submitLogin">
 		</div>
-	</form>
+	</form> -->
     <div class="noteContainer" id="noteContainer">
         
     </div>
-    <script src="index.js"></script>
+    <div id="newNoteBtn">+</div>
+    <div class="popup" id="popup">
+        <div class="popupContainer popupContent">
+            <div class="popupInputs popupContent">
+                <div class="popupTitle popupContent">
+                    <input type="text" id="popupTitle" value="title" readonly>
+                </div>
+                <div class="popupDescription popupContent">
+                    <textarea id="popupDescription" readonly></textarea>
+                </div>
+            </div>
+            <div id="editBtn">Edit</div>
+            <div id="deleteBtn">Delete</div>
+        </div>
+    </div><div class="error" id="error">
+        <div class="errorContent">
+            <div id="errorText">
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="js/index.js"></script>
+    <script>
+        if(document.cookie != null && getCookie('userId') != 'null') {
+        getNotes();
+} else {
+    window.location.href = "../html/login.html"
+}
+    </script>
 </body>
 </html>

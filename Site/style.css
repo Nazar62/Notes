@@ -5,6 +5,7 @@ body{
     color: white;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 .noteContainer{
     background-color: #5c5c5c;
@@ -26,11 +27,66 @@ body{
     transition: 1s;
     font-size: 0;
     padding-left: 5%;
+    
+}
+.error{
+    background-color: red;
+    padding: 1vw 1vw 1vw 1vw;
+    display: flex;
+    justify-content: center;
+    border-radius: 2vw;
+    transform: translate(100vw, 0px);
+    transition: 0.8s;
+    z-index: 20;
+}
+
+#newNoteBtn{
+    width: 10vh;
+    height: 10vh;
+    text-align: center;
+    border-radius: 10vh;
+    border: none;
+    position: fixed;
+    bottom: 1vh;
+    right: 1vw;
+    color: white;
+    background-color: #424242;
+    font-size: 3rem;
+}
+#editBtn {
+    width: 7vw;
+    padding: 1vh;
+    text-align: center;
+    text-justify:auto;
+    border-radius: 10vh;
+    border: none;
+    position: fixed;
+    bottom: 1vh;
+    right: 1vw;
+    color: white;
+    background-color: #424242;
+}
+
+#deleteBtn {
+    width: 7vw;
+    padding: 1vh;
+    text-align: center;
+    text-justify:auto;
+    border-radius: 10vh;
+    border: none;
+    position: fixed;
+    bottom: 10vh;
+    right: 1vw;
+    color: white;
+    background-color: #424242;
 }
 .visible{
     padding-bottom: 2.5%;
     padding-right: 5%;
     font-size: medium;
+}
+.overfhidden{
+    overflow: hidden;
 }
 .loginContainer{
 	display: flex;
@@ -56,4 +112,58 @@ body{
     margin: 1%;
     width: 7vw;
     color: white;
+}
+
+.popup {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    overflow-x: none;
+    transition: 0.8s;
+    transform: translate(0px, -100%);
+    margin: 0;
+    padding: 0;
+}
+.open {
+    transform: translate(0px, 0px);
+}
+.popupContainer {
+    display: flex;
+width: 80vw;
+height: 90vh;
+background-color: #5c5c5c;
+border-radius: 10vh;
+align-items: center;
+justify-content: center;
+}
+#popupTitle {
+    width: 75vw;
+    background-color: #5c5c5c;
+    border: none;
+    height: 5vh;
+    font-size: 2rem;
+    color: white;
+    opacity: 1;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+#popupDescription {
+    width: 75vw;
+    height: 70vh;
+    margin-top: 2vh;
+    font-family: Montserrat;
+    resize: none;
+    background-color: #5c5c5c;
+    border: none;
+    color: white;
+    opacity: 1;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Login</title>
+</head>
+<body>
+    <form id="loginForm">
+        <div class="loginContainer">
+            <label for="name">Login</label>
+            <input type="text" name="name" required class="inputLogin">
+            <label for="password">Password</label>
+            <input type="text" name="password" required class="inputLogin" id="password">
+			<input type="submit" value="Login" class="submitLogin">
+            <a href="register.html" style="color: white; font-size: 0.7rem; text-decoration: none;">Haven't account yet? Create new one</a>
+            <div class="error" id="error">
+                <div class="errorContent">
+                    <div id="errorText">
+                        User not exists or password incorrect
+                    </div>
+                </div>
+            </div>
+		</div>
+	</form>
+    <script src="../js/login.js"></script>
+</body>
+</html>

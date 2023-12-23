@@ -18,18 +18,31 @@ namespace NotesApi.Controllers
         }
         [HttpPost]
         [Route("Create")]
-        public IActionResult CreateUser([FromBody]User user)
+        public IActionResult CreateUser([FromBody]UserDto user)
         {
             if(user == null)
                 return BadRequest();
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            if(!_userRepository.CreateUser(user))
+            if (_userRepository.UserExists(user.Name))
             {
-                ModelState.AddModelError("","Something went wrong creating");
+                ModelState.AddModelError("error", "User exists");
                 return BadRequest(ModelState);
             }
-            return Ok("Created");
+
+            var users = new User()
+            {
+                Id = 0,
+                Name = user.Name,
+                Password = _userRepository.HashPassword(user.Password)
+            };
+            if(!_userRepository.CreateUser(users))
+            {
+                ModelState.AddModelError("error","Something went wrong creating");
+                return BadRequest(ModelState);
+            }
+            var returnedUser = _userRepository.GetUser(users.Name);
+            return Ok(returnedUser);
         }
         [HttpPut("{UserId}")]
         public IActionResult UpdateUser(int UserId, [FromBody]User user)
@@ -42,10 +55,10 @@ namespace NotesApi.Controllers
                 return BadRequest(ModelState);
             if (!_userRepository.UpdateUser(user))
             {
-                ModelState.AddModelError("", "Something went wrong updating");
+                ModelState.AddModelError("error", "Something went wrong updating");
                 return BadRequest(ModelState);
             }
-            return Ok("Updated");
+            return Ok();
 
         }
         [HttpPost]
@@ -55,25 +68,21 @@ namespace NotesApi.Controllers
             if (user == null)
                 return BadRequest();
             if (!_userRepository.UserExists(user.Name))
-                return BadRequest();
+            {
+                ModelState.AddModelError("error", "User not exists");
+                return BadRequest(ModelState);
+            }
             var hash = _userRepository.HashPassword(user.Password);
             var users = _userRepository.GetUser(user.Name);
             if (hash != users.Password)
-                return BadRequest("Password incorrect");
+            {
+                ModelState.AddModelError("error", "Password incorrect");
+                return BadRequest(ModelState);
+            }
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(users);
 
-        }
-        [HttpGet("{UserId}")]
-        public IActionResult GetUser(int UserId)
-        {
-            if (!_userRepository.UserExists(UserId))
-                return NotFound();
-            var user = _userRepository.GetUser(UserId);
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            return Ok(user);
         }
     }
 }
