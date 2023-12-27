@@ -10,11 +10,12 @@
     <form id="loginForm">
         <div class="loginContainer">
             <label for="name">Login</label>
-            <input type="text" name="name" required class="inputLogin">
+            <input type="text" name="name" required class="inputLogin" id="login">
             <label for="password">Password</label>
             <input type="text" name="password" required class="inputLogin" id="password">
 			<input type="submit" value="Login" class="submitLogin">
             <a href="register.html" style="color: white; font-size: 0.7rem; text-decoration: none;">Haven't account yet? Create new one</a>
+            <div id="fogot" style="color: white; font-size: 0.7rem; text-decoration: none; opacity: 0; display: none;"> Fogot password?</div>
             <div class="error" id="error">
                 <div class="errorContent">
                     <div id="errorText">

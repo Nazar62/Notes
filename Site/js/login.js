@@ -1,6 +1,9 @@
 const loginForm = document.getElementById('loginForm');
+const fogot = document.getElementById('fogot');
 loginForm.addEventListener('submit', function (e) {
 	e.preventDefault();
+    fogot.style.opacity = 1;
+    fogot.style.display = "block";
 	const formData = new FormData(loginForm);
 	let namel = formData.get('name');
 	let passwordl = formData.get('password');
@@ -24,21 +27,23 @@ fetch('https://localhost:7055/api/User/login', {
     return resu.json();
 })
 .then((datas) => {
-    console.log(datas.error);
+    console.log(datas);
     if(noErrors == true){
         console.log(datas);
         setCookie('userId', datas.id);
         setCookie('name', datas.name);
         setCookie('password', document.getElementById('password').value);
-        console.log('SUCCES');
+        setCookie('verificationToken', datas.verificationToken);
+        console.log(getCookie('verificationToken'));
         console.log(getCookie('userId'));
         window.location = "../index.html";
     } else {
-        let errort = datas.error;
+        let errort = datas.value;
         let errorText = document.getElementById('errorText');
         let errorH = document.getElementById("error");
         errorText.innerText = errort;
         errorH.classList.add("open");
+        noErrors = true;
     }
 
 })
@@ -62,3 +67,39 @@ function getCookie(name){
     })
     return result;
 }
+
+fogot.addEventListener('click', function(e){
+    let noErrors = true;
+    let login = document.getElementById('login');
+let link = 'https://localhost:7055/api/User/forgot-password'
+fetch('https://localhost:7055/api/User/forgot-password', {
+    method: "POST",
+    body: JSON.stringify(login.value),
+    headers:{
+        "Content-type": "application/json"
+    }
+})
+.then((resu) => {
+    if(resu.status == 400){
+        noErrors = false;
+    };
+    return resu.json();
+})
+.then((datas) => {
+    console.log(datas);
+    if(noErrors == true){
+        console.log(datas);
+        setCookie('resetToken', datas.value);
+        console.log(getCookie('resetToken'));
+        window.location = "resetPassword.html";
+    } else {
+        let errort = datas.value;
+        let errorText = document.getElementById('errorText');
+        let errorH = document.getElementById("error");
+        errorText.innerText = errort;
+        errorH.classList.add("open");
+        noErrors = true;
+    }
+
+})
+});

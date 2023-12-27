@@ -60,22 +60,27 @@ namespace NotesApi.Repository
             {
                 Id = user.Id,
                 Name = user.Name,
-                Password = hashedPass
+                Password = hashedPass,
+                Email = user.Email,
+                VerificationToken = user.VerificationToken
             };
             _context.Users.Add(userh);
             return Save();
         }
         public bool UpdateUser(User user)
         {
-            string hashedPass = HashPassword(user.Password);
-            User user1 = new User()
-            {
-                Id = user.Id,
-                Name = user.Name,
-                Password = hashedPass
-            };
-            _context.Users.Update(user1);
+            _context.Users.Update(user);
                 return Save();
+        }
+
+        public bool DeleteUser(User user)
+        {
+            _context.Users.Remove(user);
+            return Save();
+        }
+        public User GetUserByEmail(string email)
+        {
+            return _context.Users.Where(u => u.Email == email).FirstOrDefault();
         }
     }
 }

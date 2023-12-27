@@ -47,8 +47,9 @@ body{
     border-radius: 10vh;
     border: none;
     position: fixed;
-    bottom: 1vh;
-    right: 1vw;
+    bottom: 0;
+    right: 0;
+    margin: 1%;
     color: white;
     background-color: #424242;
     font-size: 3rem;
@@ -130,6 +131,7 @@ body{
     transform: translate(0px, -100%);
     margin: 0;
     padding: 0;
+    z-index: 101;
 }
 .open {
     transform: translate(0px, 0px);
@@ -167,3 +169,26 @@ justify-content: center;
     outline: none;
     -webkit-tap-highlight-color: transparent;
 }
+ header {
+    background-color: #5c5c5c;
+    position: sticky;
+    top: 0;
+    width: 100vw;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+ }
+ #userNameDiv{
+    margin-left: auto;
+    padding-right: 2%;
+ }
+ #userMenu {
+    background-color: #424242;
+    position: absolute;
+    right: 0;
+    padding: 2%;
+    border-bottom-left-radius: 2rem;
+    transition: 0.8s;
+    transform: translate(0px, -100%);
+ }

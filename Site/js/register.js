@@ -4,10 +4,12 @@ registerForm.addEventListener('submit', function (e) {
 	const formData = new FormData(registerForm);
 	let namel = formData.get('name');
 	let passwordl = formData.get('password');
+    let emaill = formData.get('email');
     let noErrors = true;
     let data = {
             name: namel,
-            password: passwordl
+            password: passwordl,
+            email: emaill
     };
 let link = 'https://localhost:7055/api/User/Create'
 fetch('https://localhost:7055/api/User/Create', {
@@ -28,11 +30,12 @@ fetch('https://localhost:7055/api/User/Create', {
         setCookie('userId', datas.id);
         setCookie('name', datas.name);
         setCookie('password', document.getElementById('password').value);
+        setCookie('verificationToken', datas.verificationToken);
         console.log('SUCCES');
         console.log(getCookie('userId'));
         window.location = "../index.html";
     } else {
-        let errort = datas.error;
+        let errort = datas.value;
         let errorText = document.getElementById('errorText');
         let errorH = document.getElementById("error");
         errorText.innerText = errort;

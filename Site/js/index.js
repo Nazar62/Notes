@@ -7,6 +7,21 @@ let deleteBtn = document.getElementById('deleteBtn');
 let isEdit = false;
 let lastClickedId = 0;
 let noErrors = true;
+let userNameDiv = document.getElementById('userNameDiv');
+let userMenu = document.getElementById('userMenu');
+
+userNameDiv.innerText = getCookie('name');
+
+userNameDiv.addEventListener('click', function(e) {
+if(userMenu.classList.contains("open")) {
+    userMenu.classList.remove("open");
+    userMenu.style.transform = "translate(0px, -100%)";
+} else {
+    userMenu.classList.add("open");
+    userMenu.style.transform = "translate(0px, 0px)";
+}
+
+});
 
 popup.addEventListener('click', function(e) {
     if(!e.target.closest('.popupContent')){
@@ -75,6 +90,8 @@ newNoteBtn.addEventListener('click', function(e) {
     popup.classList.add("open");
     document.body.style.overflowY = "hidden";
     let editBtn = document.getElementById('editBtn');
+    popupTitle.value = "";
+    popupDescription.value = "";
     popupTitle.readOnly = false;
     popupDescription.readOnly = false;
     editBtn.innerText = "Save";
@@ -107,11 +124,12 @@ fetch(`https://localhost:7055/api/Notes/updateNote/${lastClickedId}`, {
     if(noErrors == true){
         window.location.reload();
     } else {
-        let errort = datas.error;
+        let errort = datas.value;
         let errorText = document.getElementById('errorText');
         let errorH = document.getElementById("error");
         errorText.innerText = errort;
         errorH.classList.add("open");
+        noErrors = true;
     }
 
 });
@@ -140,11 +158,12 @@ fetch(`https://localhost:7055/api/Notes/updateNote/${lastClickedId}`, {
         if(noErrors == true){
             window.location = "../index.html";
         } else {
-            let errort = datas.error;
+            let errort = datas.value;
             let errorText = document.getElementById('errorText');
             let errorH = document.getElementById("error");
             errorText.innerText = errort;
             errorH.classList.add("open");
+            noErrors = true;
         }
     
     })
@@ -180,16 +199,23 @@ if(resu.status == 400){
 return resu.json();
 })
 .then((datas) => {
-console.log(datas.error);
+console.log(datas.value);
 if(noErrors == true){
     window.location.reload();
 } else {
-    let errort = datas.error;
+    let errort = datas.value;
     let errorText = document.getElementById('errorText');
     let errorH = document.getElementById("error");
     errorText.innerText = errort;
     errorH.classList.add("open");
+    noErrors = true;
 }
 
 })
+});
+
+userNameDiv.addEventListener('click', function(e) {
+
+    e.preventDefault();
+
 });

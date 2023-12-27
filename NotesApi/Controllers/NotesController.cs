@@ -35,10 +35,13 @@ namespace NotesApi.Controllers
         [Route("CreateNote")]
         public IActionResult CreateNote([FromBody]Note note)
         {
+            var user = _userRepository.GetUser(note.UserId);
             if (note == null)
                 return BadRequest();
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
+            if (user.VerificatedAt == null)
+                return BadRequest(Json("Verify account"));
 
             if(!_notesRepository.CreateNote(note))
             {

@@ -70,3 +70,13 @@ D:\vs\projects\Notes\NotesApi\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Ru
 D:\vs\projects\Notes\NotesApi\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\vs\projects\Notes\NotesApi\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\vs\projects\Notes\NotesApi\obj\Debug\net7.0\NotesApi.sourcelink.json
+D:\vs\projects\Notes\NotesApi\bin\Debug\net7.0\Humanizer.dll
+D:\vs\projects\Notes\NotesApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\vs\projects\Notes\NotesApi\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+D:\vs\projects\Notes\NotesApi\bin\Debug\net7.0\Mono.TextTemplating.dll
+D:\vs\projects\Notes\NotesApi\bin\Debug\net7.0\System.CodeDom.dll
+D:\vs\projects\Notes\NotesApi\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+D:\vs\projects\Notes\NotesApi\bin\Debug\net7.0\MailKit.dll
+D:\vs\projects\Notes\NotesApi\bin\Debug\net7.0\MimeKit.dll
+D:\vs\projects\Notes\NotesApi\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+D:\vs\projects\Notes\NotesApi\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NotesApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f1517d58cd575b27340ba905849c7b5c5ebebfee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bccb218dde48bafa84b122833486630e5a076426")]
 [assembly: System.Reflection.AssemblyProductAttribute("NotesApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NotesApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
