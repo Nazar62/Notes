@@ -19,11 +19,13 @@ namespace NotesApi.Controllers
             _userRepository = userRepository;
         }
 
-        [HttpGet("GetUserNotes/{UserId}")]
-        public IActionResult GetNotes(int UserId)
+        [HttpGet("GetUserNotes/{UserId}/{Password}")]
+        public IActionResult GetNotes(int UserId, string Password)
         {
             if (!_userRepository.UserExists(UserId))
                 return NotFound();
+            if (_userRepository.GetUser(UserId).Password != _userRepository.HashPassword(Password))
+                return BadRequest(Json("Password changed"));
 
             var notes = _notesRepository.GetNotes(UserId);
             if (!ModelState.IsValid)

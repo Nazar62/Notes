@@ -1,18 +1,17 @@
-const registerForm = document.getElementById('registerForm');
-registerForm.addEventListener('submit', function (e) {
+const changeEmailForm = document.getElementById('changeEmailForm');
+changeEmailForm.addEventListener('submit', function (e) {
 	e.preventDefault();
-	const formData = new FormData(registerForm);
-	let namel = formData.get('name');
-	let passwordl = formData.get('password');
-    let emaill = formData.get('email');
+	const formData = new FormData(changeEmailForm);
+	let email = formData.get('email');
+	let password = formData.get('password');
     let noErrors = true;
     let data = {
-            name: namel,
-            password: passwordl,
-            email: emaill
+        id: getCookie('userId'),
+        newEmail: email,
+        password: password
     };
-let link = 'https://localhost:7055/api/User/Create'
-fetch('https://localhost:7055/api/User/Create', {
+let link = 'https://localhost:7055/api/User/change-email'
+fetch('https://localhost:7055/api/User/change-email', {
     method: "POST",
     body: JSON.stringify(data),
     headers:{
@@ -22,25 +21,22 @@ fetch('https://localhost:7055/api/User/Create', {
 .then((resu) => {
     if(resu.status == 400){
         noErrors = false;
-    }
+    };
     return resu.json();
 })
 .then((datas) => {
-    if(noErrors) {
-        setCookie('userId', datas.id);
-        setCookie('name', datas.name);
-        setCookie('password', document.getElementById('password').value);
-        setCookie('verificationToken', datas.verificationToken);
-        setCookie('hashedPass', datas.password);
-        console.log('SUCCES');
-        console.log(getCookie('userId'));
-        window.location = "../index.html";
+    console.log(datas);
+    if(noErrors == true){
+        console.log(datas);
+        alert("Check Email!");
+        window.location.href = "../index.html"
     } else {
         let errort = datas.value;
         let errorText = document.getElementById('errorText');
         let errorH = document.getElementById("error");
         errorText.innerText = errort;
         errorH.classList.add("open");
+        noErrors = true;
     }
 
 })
@@ -64,5 +60,3 @@ function getCookie(name){
     })
     return result;
 }
-
-console.log("connected");

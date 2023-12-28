@@ -9,6 +9,7 @@ let lastClickedId = 0;
 let noErrors = true;
 let userNameDiv = document.getElementById('userNameDiv');
 let userMenu = document.getElementById('userMenu');
+let deleteUser = document.getElementById('deleteUser');
 
 userNameDiv.innerText = getCookie('name');
 
@@ -74,12 +75,16 @@ function getCookie(name){
 function getNotes() {
 
     const userid = getCookie('userId');
-    fetch(`https://localhost:7055/api/Notes/GetUserNotes/${getCookie('userId')}`)
+    fetch(`https://localhost:7055/api/Notes/GetUserNotes/${getCookie('userId')}/${getCookie('password')}`)
 .then((resu) => resu.json())
 .then(data => {
+    if(data.value == "Password changed") {
+        deleteCookie('userId');
+        window.location.reload();
+    }
     data.forEach(note => {
         const mackup = `
-        <h3 class="title" id="${note.id}">${note.title}</h3>
+        <h3 class="title hand" id="${note.id}">${note.title}</h3>
         <div class="noteDescription" id="${note.id}d">${note.description}</div>`;
         document.getElementById('noteContainer').insertAdjacentHTML('beforeend',mackup);
     })
@@ -218,4 +223,41 @@ userNameDiv.addEventListener('click', function(e) {
 
     e.preventDefault();
 
+});
+
+deleteUser.addEventListener('click', function(e) {
+    var result = confirm('Are you sure?');
+    if(result == true) {
+        let data = {
+            name: getCookie('name'),
+            password: getCookie('password')
+    };
+        fetch(`https://localhost:7055/api/User/delete/${getCookie('userId')}`, {
+    method: 'DELETE',
+    body: JSON.stringify(data),
+    headers:{
+        "Content-type": "application/json"
+    }
+})
+.then((resu) => {
+    if(resu.status == 400 || resu.status == 500){
+        noErrors = false;
+    };
+    return resu.json();
+})
+.then((datas) => {
+    if(noErrors == true){
+        deleteCookie('userId');
+        window.location.reload();
+    } else {
+        let errort = datas.value;
+        let errorText = document.getElementById('errorText');
+        let errorH = document.getElementById("error");
+        errorText.innerText = errort;
+        errorH.classList.add("open");
+        noErrors = true;
+    }
+
+})
+    }
 });

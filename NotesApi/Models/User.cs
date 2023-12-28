@@ -8,8 +8,8 @@
         public string Email { get; set; }
         public string? VerificationToken { get; set; }
         public DateTime? VerificatedAt { get; set; }
-        public string? PasswordResetToken { get; set; }
+        public string? ResetToken { get; set; }
         public DateTime? ResetTokenExpires { get; set; }
-        public bool? ResetPasswordConfirmed { get; set; }
+        public bool? ResetConfirmed { get; set; }
     }
 }

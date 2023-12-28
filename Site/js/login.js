@@ -34,6 +34,7 @@ fetch('https://localhost:7055/api/User/login', {
         setCookie('name', datas.name);
         setCookie('password', document.getElementById('password').value);
         setCookie('verificationToken', datas.verificationToken);
+        setCookie('hashedPass', datas.password);
         console.log(getCookie('verificationToken'));
         console.log(getCookie('userId'));
         window.location = "../index.html";

@@ -82,5 +82,15 @@ namespace NotesApi.Repository
         {
             return _context.Users.Where(u => u.Email == email).FirstOrDefault();
         }
+
+        public User GetUserByResetToken(string token)
+        {
+            return _context.Users.Where(u => u.ResetToken == token).FirstOrDefault();
+        }
+
+        public User GetUserByVerifyToken(string token)
+        {
+            return _context.Users.Where(u => u.VerificationToken == token).FirstOrDefault();
+        }
     }
 }

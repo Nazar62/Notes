@@ -13,5 +13,7 @@ namespace NotesApi.Interfaces
         bool CreateUser(User user);
         bool UpdateUser(User user);
         bool DeleteUser(User user);
+        User GetUserByResetToken(string token);
+        User GetUserByVerifyToken(string token);
     }
 }

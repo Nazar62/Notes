@@ -35,9 +35,13 @@ body{
     display: flex;
     justify-content: center;
     border-radius: 2vw;
-    transform: translate(100vw, 0px);
+    transform: translate(150vw, 0px);
     transition: 0.8s;
     z-index: 20;
+}
+.a {
+    text-decoration: none;
+    color: white;
 }
 
 #newNoteBtn{
@@ -53,6 +57,7 @@ body{
     color: white;
     background-color: #424242;
     font-size: 3rem;
+    cursor: pointer;
 }
 #editBtn {
     width: 7vw;
@@ -66,6 +71,7 @@ body{
     right: 1vw;
     color: white;
     background-color: #424242;
+    cursor: pointer;
 }
 
 #deleteBtn {
@@ -80,6 +86,7 @@ body{
     right: 1vw;
     color: white;
     background-color: #424242;
+    cursor: pointer;
 }
 .visible{
     padding-bottom: 2.5%;
@@ -132,6 +139,7 @@ body{
     margin: 0;
     padding: 0;
     z-index: 101;
+    cursor: pointer;
 }
 .open {
     transform: translate(0px, 0px);
@@ -144,6 +152,7 @@ background-color: #5c5c5c;
 border-radius: 10vh;
 align-items: center;
 justify-content: center;
+cursor: default;
 }
 #popupTitle {
     width: 75vw;
@@ -182,6 +191,7 @@ justify-content: center;
  #userNameDiv{
     margin-left: auto;
     padding-right: 2%;
+    cursor: pointer;
  }
  #userMenu {
     background-color: #424242;
@@ -191,4 +201,7 @@ justify-content: center;
     border-bottom-left-radius: 2rem;
     transition: 0.8s;
     transform: translate(0px, -100%);
+ }
+ .hand{
+    cursor: pointer;
  }
