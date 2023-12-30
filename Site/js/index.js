@@ -16,10 +16,10 @@ userNameDiv.innerText = getCookie('name');
 userNameDiv.addEventListener('click', function(e) {
 if(userMenu.classList.contains("open")) {
     userMenu.classList.remove("open");
-    userMenu.style.transform = "translate(0px, -100%)";
+    userMenu.style.transform = "translate(0px, -200%)";
 } else {
     userMenu.classList.add("open");
-    userMenu.style.transform = "translate(0px, 0px)";
+    userMenu.style.transform = "translate(0px, -23%)";
 }
 
 });
@@ -260,4 +260,9 @@ deleteUser.addEventListener('click', function(e) {
 
 })
     }
+});
+
+document.getElementById('LogOut').addEventListener('click', function (e) {
+    deleteCookie('userId');
+    window.location.reload();
 });

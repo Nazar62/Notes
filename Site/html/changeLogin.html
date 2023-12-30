@@ -10,11 +10,13 @@
     
     <form id="changeLoginForm">
         <div class="loginContainer">
-            <label for="login">New Login</label>
-            <input type="text" name="login" required class="inputLogin" >
-            <label for="password">Password</label>
-            <input type="text" name="password" required class="inputLogin">
-			<input type="submit" value="Confirm" class="submitLogin">
+            <div class="login">
+                <label for="login" class="loginLabel">New Login</label><br>
+                <input type="text" placeholder="Login" name="login" required class="inputLogin" ><br>
+                <label for="password" class="loginLabel">Password</label><br>
+                <input type="text" placeholder="Password" name="password" required class="inputLogin"><br>
+                <input type="submit" value="Confirm" class="submitLogin"><br>
+            </div>
             <div class="error" id="error">
                 <div class="errorContent">
                     <div id="errorText">

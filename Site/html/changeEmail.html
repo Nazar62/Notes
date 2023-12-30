@@ -9,11 +9,13 @@
 <body>
     <form id="changeEmailForm">
         <div class="loginContainer">
-            <label for="email">New Email</label>
-            <input type="text" name="email" required class="inputLogin">
-            <label for="password">Password</label>
-            <input type="text" name="password" required class="inputLogin">
-			<input type="submit" value="Confirm" class="submitLogin">
+            <div class="login">
+                <label for="email">New Email</label><br>
+                <input placeholder="New Email" type="text" name="email" required class="inputLogin"><br>
+                <label for="password">Password</label><br>
+                <input type="password" placeholder="Password" name="password" required class="inputLogin"><br>
+                <input type="submit" value="Confirm" class="submitLogin">
+            </div>
             <div class="error" id="error">
                 <div class="errorContent">
                     <div id="errorText">

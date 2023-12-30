@@ -9,14 +9,16 @@
 <body>
     <form id="registerForm">
         <div class="loginContainer">
-            <label for="name">Login</label>
-            <input type="text" name="name" required class="inputLogin">
-            <label for="password">Password</label>
-            <input type="text" name="password" required class="inputLogin" id="password">
-            <label for="email">Email</label>
-            <input type="email" name="email" required class="inputLogin" id="email">
-			<input type="submit" value="Register" class="submitLogin">
-            <a href="login.html" style="color: white; font-size: 0.7rem; text-decoration: none;">Have account? Let's login</a>
+            <div class="login">
+                <label for="name" class="loginLabel">Login</label><br>
+                <input type="text" placeholder="Login" name="name" required class="inputLogin"><br>
+                <label for="password" class="loginLabel">Password</label><br>
+                <input type="password" placeholder="Password" name="password" required class="inputLogin" id="password"><br>
+                <label for="email" class="loginLabel">Email</label><br>
+                <input type="email" placeholder="Email" name="email" required class="inputLogin" id="email"><br>
+                <input type="submit" value="Register" class="submitLogin"><br>
+                <a href="login.html" style="color: white; font-size: 0.7rem; text-decoration: none;">Have account? Let's login</a>
+            </div>
             <div class="error" id="error">
                 <div class="errorContent">
                     <div id="errorText">

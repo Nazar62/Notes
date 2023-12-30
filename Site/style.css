@@ -1,14 +1,25 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 body{
-    background-color: #696969;
     font-family: Montserrat;
     color: white;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background-image: url('./img.jpg');
+}
+:root {
+    --accentColor: white;/* rgba(66, 66, 66, 0.5); */
+    --middleColor: transperent;/* rgba(92, 92, 92, 0.5); */
+    --lightColor: transperent;/* rgba(105, 105, 105, 0.5); */
+    --borderColor: white;
+    --borderSize: 0.15rem;
+    --blurSize: 0.3rem;
+    --buttonColor: #330a6a;
 }
 .noteContainer{
-    background-color: #5c5c5c;
+    background-color: transparent;
+    backdrop-filter: blur(var(--blurSize));
+    border: var(--borderSize) solid var(--borderColor);
     border-radius: 1rem;
     transition: 1s;
     display: block;
@@ -41,7 +52,7 @@ body{
 }
 .a {
     text-decoration: none;
-    color: white;
+    color: var(--buttonColor);
 }
 
 #newNoteBtn{
@@ -49,15 +60,17 @@ body{
     height: 10vh;
     text-align: center;
     border-radius: 10vh;
-    border: none;
     position: fixed;
     bottom: 0;
     right: 0;
     margin: 1%;
-    color: white;
-    background-color: #424242;
+    color: var(--buttonColor);
+    background-color: var(--accentColor);/* rgba(66, 66, 66, 0.5); */
+    border: var(--borderSize) solid var(--borderColor);
     font-size: 3rem;
     cursor: pointer;
+    font-weight:bolder;
+    backdrop-filter: blur(var(--blurSize));
 }
 #editBtn {
     width: 7vw;
@@ -69,9 +82,12 @@ body{
     position: fixed;
     bottom: 1vh;
     right: 1vw;
-    color: white;
-    background-color: #424242;
+    color: var(--buttonColor);
+    background-color: var(--accentColor);
     cursor: pointer;
+    font-weight: bold;
+    border: var(--borderSize) solid var(--borderColor);
+    backdrop-filter: blur(var(--blurSize));
 }
 
 #deleteBtn {
@@ -84,9 +100,12 @@ body{
     position: fixed;
     bottom: 10vh;
     right: 1vw;
-    color: white;
-    background-color: #424242;
+    color: var(--buttonColor);
+    background-color: var(--accentColor);
     cursor: pointer;
+    font-weight: bold;
+    border: var(--borderSize) solid var(--borderColor);
+    backdrop-filter: blur(var(--blurSize));
 }
 .visible{
     padding-bottom: 2.5%;
@@ -105,21 +124,41 @@ body{
     overflow: hidden;
 }
 .inputLogin{
-    background-color: #5c5c5c;
-    border-width: 0;
+    background-color: var(--middleColor);
+    border: var(--borderSize) solid var(--borderColor);
+    color: white;
     height: 5vh;
+    width: 15vw;
     border-radius: 5vh;
-    padding-left: 1%;
+    padding-left: 3%;
+    margin-top: 2%;
 }
 .submitLogin{
-    background-color: #5c5c5c;
+    background-color: white;
     height: 4vh;
     border-radius: 4vh;
     border: 0;
     text-align: center;
     margin: 1%;
     width: 7vw;
-    color: white;
+    color: var(--buttonColor);
+}
+
+.login{
+    text-align: center;
+    border: var(--borderSize) solid var(--borderColor);
+    padding: 2.5%;
+    backdrop-filter: blur(var(--blurSize));
+    border-radius: 3rem;
+}
+
+.loginLabel {
+    margin-top: 1%;
+    font-size: 1.25rem;
+}
+input::placeholder{
+    color: var(--accentColor);
+    padding-left: 2%;
 }
 
 .popup {
@@ -139,6 +178,7 @@ body{
     margin: 0;
     padding: 0;
     z-index: 101;
+    backdrop-filter: blur(var(--blurSize));
     cursor: pointer;
 }
 .open {
@@ -148,7 +188,8 @@ body{
     display: flex;
 width: 80vw;
 height: 90vh;
-background-color: #5c5c5c;
+background-color: var(--middleColor);
+border: var(--borderSize) solid var(--borderColor);
 border-radius: 10vh;
 align-items: center;
 justify-content: center;
@@ -156,7 +197,7 @@ cursor: default;
 }
 #popupTitle {
     width: 75vw;
-    background-color: #5c5c5c;
+    background-color: var(--middleColor);
     border: none;
     height: 5vh;
     font-size: 2rem;
@@ -164,6 +205,7 @@ cursor: default;
     opacity: 1;
     outline: none;
     -webkit-tap-highlight-color: transparent;
+    cursor: default;
 }
 #popupDescription {
     width: 75vw;
@@ -171,15 +213,19 @@ cursor: default;
     margin-top: 2vh;
     font-family: Montserrat;
     resize: none;
-    background-color: #5c5c5c;
+    background-color: var(--middleColor);
     border: none;
     color: white;
     opacity: 1;
     outline: none;
     -webkit-tap-highlight-color: transparent;
+    cursor: default;
 }
  header {
-    background-color: #5c5c5c;
+    /* background-color: var(--middleColor); */
+    background: transparent;
+    backdrop-filter: blur(20px);
+    border: 0.15rem solid white;
     position: sticky;
     top: 0;
     width: 100vw;
@@ -187,6 +233,7 @@ cursor: default;
     display: flex;
     align-items: center;
     z-index: 100;
+    margin-bottom: 2%;
  }
  #userNameDiv{
     margin-left: auto;
@@ -194,14 +241,24 @@ cursor: default;
     cursor: pointer;
  }
  #userMenu {
-    background-color: #424242;
+    background-color: var(--accentColor);
+    color: var(--buttonColor);
     position: absolute;
     right: 0;
     padding: 2%;
     border-bottom-left-radius: 2rem;
     transition: 0.8s;
-    transform: translate(0px, -100%);
+    transform: translate(0px, -200%);
+    z-index: 10;
  }
  .hand{
     cursor: pointer;
+ }
+ .bg {
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    z-index: -10;
  }
